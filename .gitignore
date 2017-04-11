@@ -1,0 +1,27 @@
+# filetypes
+*.cbp
+*.cbTemp
+*.depend
+*.layout
+*.supp
+*.swo
+*.swp
+*.fuse_hidden*
+*.npp
+*~
+*.suo
+*.csproj.user
+*.cachefile
+*.Debug*
+*.exe
+*.pdb
+*.pdf
+*.sdf
+*.opensdf
+
+# directories
+*bin/
+*obj/
+*Debug/
+*Release/
+*ipch/
