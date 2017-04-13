@@ -314,16 +314,27 @@
 	{
 		// Create a scene
 		data.camera.position.z = 20;
+		var matParams = { color: 0xffffff, wireframe: true };
 
-		var mat1 = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
-		var mat2 = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
-		var cone1 = new THREE.ConeGeometry(5, 10, 10);
-		var cone2 = new THREE.ConeGeometry(5, 10, 10);
+		var box = new THREE.Mesh(
+				new THREE.BoxGeometry(2, 2, 2),
+				new THREE.MeshBasicMaterial(matParams));
 
-		data.scene.add(new THREE.Mesh(cone1, mat1));
-		data.scene.add(new THREE.Mesh(cone2, mat2));
+		var cone = new THREE.Mesh(
+				new THREE.ConeGeometry(4, 7, 10),
+				new THREE.MeshBasicMaterial(matParams));
 
-		data.scene.children[0].translateOnAxis(new THREE.Vector3(1,0,0), 1);
+		var cylinder = new THREE.Mesh(
+				new THREE.CylinderGeometry(3, 5, 5),
+				new THREE.MeshBasicMaterial(matParams));
+
+		box.translateY(3);
+		cone.translateX(-5);
+		cylinder.translateX(5);
+
+		data.scene.add(box);
+		data.scene.add(cone);
+		data.scene.add(cylinder);
 	}
 
 	///////////////////////////////////
@@ -421,7 +432,7 @@
 		document.body.appendChild(renderer.domElement);
 
 		data.scene = new THREE.Scene();
-		data.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+		data.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 		data.raycaster = new THREE.Raycaster();
 
 		init();
