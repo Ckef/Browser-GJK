@@ -2,7 +2,7 @@
 {
 	var MAX_ITERATIONS = 64;
 
-	var data = // Data holder
+	var data = // State holder
 	{
 		scene: undefined,
 		camera: undefined,
@@ -437,15 +437,7 @@
 
 		init();
 
-		// Resize the renderer and camera and react to mouse movement
-		window.addEventListener('resize', function()
-		{
-	 		renderer.setSize(window.innerWidth, window.innerHeight);
-			data.camera.aspect = window.innerWidth / window.innerHeight;
-			data.camera.updateProjectionMatrix();
-		}, false);
-
-		// Also translate mouse position
+		// Translate mouse position
 		var translateMouse = function(x, y)
 		{
 			return {
@@ -453,6 +445,14 @@
 				y: -((y - renderer.domElement.offsetTop) / renderer.domElement.clientHeight) * 2 + 1
 			};
 		}
+
+		// Resize the renderer and camera and react to mouse movement
+		window.addEventListener('resize', function()
+		{
+	 		renderer.setSize(window.innerWidth, window.innerHeight);
+			data.camera.aspect = window.innerWidth / window.innerHeight;
+			data.camera.updateProjectionMatrix();
+		}, false);
 
 		window.addEventListener('mousemove', function(e)
 		{
